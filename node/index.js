@@ -14,12 +14,12 @@ const connection = mysql.createConnection(config)
 const createTable  = `CREATE TABLE IF NOT EXISTS nodedb.people (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);`
 connection.query(createTable);
 
-const RANDOM = Math.floor(Math.random() * 10);
-
-const sql = `INSERT INTO people(name) values('Josemar ${RANDOM}')`
-connection.query(sql)
-
 app.get('/', async (req,res) => {
+    const RANDOM = Math.floor(Math.random() * 10);
+
+    const sql = `INSERT INTO people(name) values('Josemar ${RANDOM}')`
+    connection.query(sql)
+
     let tableUsers = '<table><thead><tr><th>#</th><th>Name</th></tr></thead><tbody>';
 
     const getUsers = `SELECT id, name FROM people`;
